@@ -1,6 +1,6 @@
 ﻿<script lang="ts">
   import { t } from 'svelte-i18n';
-  import { Activity, BarChart3, History, Settings, ShieldCheck, Zap } from 'lucide-svelte';
+  import { Activity, BarChart3, History, Settings, Zap } from 'lucide-svelte';
   import { bandwidthStore } from '$lib/stores/bandwidthStore.svelte';
 
   let {
@@ -30,8 +30,8 @@
 <aside class="flex flex-col shrink-0 border-r select-none h-full" style="width:230px; background:var(--bg-sidebar); border-color:var(--border);">
   <!-- App Logo / Title -->
   <div class="flex items-center gap-3 px-5 py-4 border-b" style="border-color:var(--border);">
-    <div class="flex items-center justify-center w-8 h-8 rounded-lg shadow-sm" style="background:var(--accent-dim); border: 1px solid rgba(59,130,246,0.3);">
-      <ShieldCheck class="w-4.5 h-4.5" style="color:var(--accent);" />
+    <div class="flex items-center justify-center w-8 h-8 rounded-lg shadow-sm" style="background:rgba(6,182,212,0.1); border: 1px solid rgba(6,182,212,0.3);">
+      <img src="/favicon.png" alt="NetWatch Logo" class="w-5 h-5 object-contain" />
     </div>
     <div class="flex flex-col">
       <span class="font-bold text-[14px] tracking-tight" style="color:var(--text-main);">NetWatch</span>
