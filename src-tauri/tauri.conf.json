@@ -1,6 +1,6 @@
-{
+﻿{
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "netwatch",
+  "productName": "NetWatch",
   "version": "0.1.0",
   "identifier": "com.alfre.netwatch",
   "build": {
@@ -12,9 +12,11 @@
   "app": {
     "windows": [
       {
-        "title": "netwatch",
-        "width": 800,
-        "height": 600
+        "title": "NetWatch",
+        "width": 1120,
+        "height": 740,
+        "minWidth": 850,
+        "minHeight": 550
       }
     ],
     "security": {
@@ -26,6 +28,7 @@
     "targets": "all",
     "icon": [
       "icons/32x32.png",
+      "icons/64x64.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
