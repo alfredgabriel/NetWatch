@@ -1,0 +1,85 @@
+﻿{
+  "app": {
+    "name": "NetWatch",
+    "tagline": "Real-Time Outbound Network Monitor",
+    "version": "v0.1.0-alpha"
+  },
+  "metrics": {
+    "upload": "Upload",
+    "download": "Download",
+    "active_connections": "Active Sockets",
+    "active_processes": "Broadcasting Apps",
+    "new_events": "New Events"
+  },
+  "table": {
+    "process": "Process / Application",
+    "pid": "PID",
+    "remote_destination": "Remote Destination (IP / Domain)",
+    "port_proto": "Port / Protocol",
+    "state": "Status",
+    "bandwidth": "Bandwidth",
+    "no_connections": "No active connections match the selected filters.",
+    "started": "Started",
+    "local_address": "Local Address",
+    "remote_address": "Remote Address",
+    "view_flat": "Flat Table",
+    "view_grouped": "Grouped by App"
+  },
+  "status": {
+    "established": "Established",
+    "listen": "Listening",
+    "syn_sent": "SYN Sent",
+    "close_wait": "Close Wait",
+    "time_wait": "Time Wait"
+  },
+  "filters": {
+    "all": "All",
+    "active_only": "Active Only",
+    "tcp_only": "TCP",
+    "udp_only": "UDP",
+    "established": "Established",
+    "listening": "Listening",
+    "unresolved": "Raw IPs",
+    "search_placeholder": "Search app, IP, domain or port..."
+  },
+  "actions": {
+    "refresh": "Refresh",
+    "pause": "Pause Capture",
+    "resume": "Resume Capture",
+    "clear": "Clear History",
+    "language": "Language",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "close": "Close"
+  },
+  "nav": {
+    "live": "Live Connections",
+    "statistics": "Statistics",
+    "history": "Event History",
+    "settings": "Settings"
+  },
+  "stats": {
+    "title": "Network Statistics & Distribution",
+    "top_apps": "Top Applications by Sockets",
+    "top_domains": "Top Contacted Domains",
+    "protocol_dist": "Protocol Distribution",
+    "popular_ports": "Common Ports In Use",
+    "no_stats": "Waiting for network activity data..."
+  },
+  "history": {
+    "title": "Socket Event Log",
+    "subtitle": "Chronological audit trail of discovered network sockets",
+    "event_discovered": "New connection detected",
+    "clear_log": "Clear Log",
+    "empty": "No events recorded yet during this monitoring session."
+  },
+  "settings": {
+    "title": "Application Settings",
+    "general": "General",
+    "language_label": "Interface Language",
+    "polling_label": "Telemetry Refresh Rate",
+    "polling_desc": "Hardware socket polling cycle from Windows kernel (300ms)",
+    "about_title": "About NetWatch",
+    "about_desc": "High-performance real-time network activity inspector built with Rust & Svelte 5."
+  }
+}

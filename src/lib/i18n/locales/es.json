@@ -1,0 +1,85 @@
+﻿{
+  "app": {
+    "name": "NetWatch",
+    "tagline": "Monitor de Red Saliente en Tiempo Real",
+    "version": "v0.1.0-alpha"
+  },
+  "metrics": {
+    "upload": "Subida",
+    "download": "Bajada",
+    "active_connections": "Sockets Activos",
+    "active_processes": "Apps Transmitiendo",
+    "new_events": "Nuevos Eventos"
+  },
+  "table": {
+    "process": "Proceso / Aplicación",
+    "pid": "PID",
+    "remote_destination": "Destino Remoto (IP / Dominio)",
+    "port_proto": "Puerto / Protocolo",
+    "state": "Estado",
+    "bandwidth": "Ancho de Banda",
+    "no_connections": "No hay conexiones que coincidan con los filtros seleccionados.",
+    "started": "Inicio",
+    "local_address": "Dirección Local",
+    "remote_address": "Dirección Remota",
+    "view_flat": "Tabla Plana",
+    "view_grouped": "Agrupado por App"
+  },
+  "status": {
+    "established": "Establecida",
+    "listen": "Escuchando",
+    "syn_sent": "SYN Enviado",
+    "close_wait": "Espera de Cierre",
+    "time_wait": "Espera de Tiempo"
+  },
+  "filters": {
+    "all": "Todos",
+    "active_only": "Solo Activas",
+    "tcp_only": "TCP",
+    "udp_only": "UDP",
+    "established": "Establecidas",
+    "listening": "Escuchando",
+    "unresolved": "Solo IPs",
+    "search_placeholder": "Buscar app, IP, dominio o puerto..."
+  },
+  "actions": {
+    "refresh": "Refrescar",
+    "pause": "Pausar Captura",
+    "resume": "Reanudar Captura",
+    "clear": "Limpiar Historial",
+    "language": "Idioma",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "close": "Cerrar"
+  },
+  "nav": {
+    "live": "Conexiones en Vivo",
+    "statistics": "Estadísticas",
+    "history": "Historial de Eventos",
+    "settings": "Configuración"
+  },
+  "stats": {
+    "title": "Estadísticas y Distribución de Red",
+    "top_apps": "Apps Principales por Sockets",
+    "top_domains": "Dominios Más Contactados",
+    "protocol_dist": "Distribución por Protocolo",
+    "popular_ports": "Puertos Comunes en Uso",
+    "no_stats": "Esperando datos de tráfico de red..."
+  },
+  "history": {
+    "title": "Registro de Eventos de Socket",
+    "subtitle": "Auditoría cronológica de sockets de red detectados",
+    "event_discovered": "Nueva conexión detectada",
+    "clear_log": "Limpiar Registro",
+    "empty": "No hay eventos registrados aún durante esta sesión."
+  },
+  "settings": {
+    "title": "Configuración de la Aplicación",
+    "general": "General",
+    "language_label": "Idioma de Interfaz",
+    "polling_label": "Tasa de Refresco de Telemetría",
+    "polling_desc": "Ciclo de sondeo de sockets del kernel de Windows (300ms)",
+    "about_title": "Acerca de NetWatch",
+    "about_desc": "Inspector de tráfico de red en tiempo real de alto rendimiento construido con Rust y Svelte 5."
+  }
+}
