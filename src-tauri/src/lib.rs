@@ -3,7 +3,7 @@ pub mod network;
 pub mod process;
 
 use std::time::Duration;
-use tauri::Emitter;
+use tauri::{Emitter, Manager};
 
 #[derive(serde::Serialize, Clone, Debug)]
 pub struct EnrichedConnection {
@@ -22,6 +22,11 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .setup(|app| {
+            if let Some(icon) = app.default_window_icon() {
+                for (_, window) in app.webview_windows() {
+                    let _ = window.set_icon(icon.clone());
+                }
+            }
             let app_handle = app.handle().clone();
             let dns_resolver = dns::resolver::DnsResolver::new();
 

@@ -16,7 +16,8 @@
         "width": 1120,
         "height": 740,
         "minWidth": 850,
-        "minHeight": 550
+        "minHeight": 550,
+        "label": "main"
       }
     ],
     "security": {
