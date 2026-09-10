@@ -1,24 +1,25 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @layer base {
   :root {
-    --bg-main:    #0A0D16;
-    --bg-sidebar: #0F1320;
-    --bg-panel:   #121829;
-    --bg-row-a:   #0D111E;
-    --bg-row-b:   #0A0D16;
-    --bg-topbar:  #0C101D;
-    --border:     rgba(255, 255, 255, 0.07);
-    --border-light: rgba(255, 255, 255, 0.12);
-    --accent:     #3B82F6;
-    --accent-dim: rgba(59, 130, 246, 0.12);
-    --text-main:  #F1F5F9;
-    --text-muted: #94A3B8;
-    --text-faint: #475569;
+    --bg-main:    #000000;
+    --bg-sidebar: #000000;
+    --bg-panel:   #050505;
+    --bg-row-a:   #000000;
+    --bg-row-b:   #080808;
+    --bg-topbar:  #000000;
+    --border:     #222222;
+    --border-light: #333333;
+    --accent:     #ffffff;
+    --accent-dim: rgba(255, 255, 255, 0.1);
+    --text-main:  #ffffff;
+    --text-muted: #888888;
+    --text-faint: #555555;
   }
 
   *, *::before, *::after {
     box-sizing: border-box;
+    border-radius: 0 !important;
   }
 
   html, body {
@@ -26,9 +27,9 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: var(--bg-main);
-    color: var(--text-main);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Courier New', 'JetBrains Mono', Courier, monospace;
     font-size: 13px;
     -webkit-font-smoothing: antialiased;
     user-select: none;
@@ -36,65 +37,84 @@
 
   input, button, select {
     font-family: inherit;
+    border-radius: 0 !important;
   }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
+  background: #333333;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: #ffffff;
 }
 
 /* Table row pure CSS hover */
 .conn-row {
-  transition: background-color 100ms ease;
+  transition: background-color 80ms ease;
 }
 .conn-row:hover {
-  background-color: rgba(59, 130, 246, 0.08) !important;
+  background-color: #111111 !important;
 }
 
 /* Nav Item hover */
 .nav-item {
-  transition: all 120ms ease;
+  transition: all 80ms ease;
 }
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--text-main);
+  background-color: #111111;
+  color: #ffffff;
+  border-color: #333333;
 }
 
-/* Status & Protocol pills */
+/* Status & Protocol pills - Brutalist */
 .pill-established {
-  background: rgba(34, 197, 94, 0.12);
-  color: #22C55E;
-  border: 1px solid rgba(34, 197, 94, 0.28);
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 1px 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 700;
 }
 .pill-listen {
-  background: rgba(245, 158, 11, 0.12);
-  color: #F59E0B;
-  border: 1px solid rgba(245, 158, 11, 0.28);
+  background: #000000;
+  color: #888888;
+  border: 1px solid #444444;
+  padding: 1px 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
 }
 .pill-close {
-  background: rgba(100, 116, 139, 0.12);
-  color: #94A3B8;
-  border: 1px solid rgba(100, 116, 139, 0.28);
+  background: #000000;
+  color: #555555;
+  border: 1px solid #222222;
+  padding: 1px 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
 }
 .pill-tcp {
-  background: rgba(59, 130, 246, 0.12);
-  color: #60A5FA;
-  border: 1px solid rgba(59, 130, 246, 0.28);
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #333333;
+  padding: 1px 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 700;
 }
 .pill-udp {
-  background: rgba(139, 92, 246, 0.12);
-  color: #A78BFA;
-  border: 1px solid rgba(139, 92, 246, 0.28);
+  background: #000000;
+  color: #aaaaaa;
+  border: 1px solid #333333;
+  padding: 1px 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 700;
 }

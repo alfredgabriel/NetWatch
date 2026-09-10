@@ -1,93 +1,85 @@
-# 🛡️ NetWatch
+# 📡 NetWatch
+### Monitor de Conexiones de Red Salientes en Tiempo Real para Windows
+*Real-time outbound network connection monitor for Windows. Fast, driverless, and open-source.*
 
-> **Real-time outbound network connection monitor for Windows. Fast, driverless, and open-source.**
-
-NetWatch is a modern, lightweight desktop application designed for Windows that monitors every outbound TCP & UDP socket connection in real time. It resolves remote IPs to domains, identifies the executable path, and displays bandwidth usage with zero bloat.
-
-![License](https://img.shields.io/badge/License-MIT-cyan.svg)
-![Tauri](https://img.shields.io/badge/Tauri-v2.0-blue.svg)
-![Rust](https://img.shields.io/badge/Rust-1.91-orange.svg)
-![Svelte](https://img.shields.io/badge/Svelte-v5.0-red.svg)
-![TailwindCSS](https://img.shields.io/badge/Tailwind-v4.0-38bdf8.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Built with Tauri v2](https://img.shields.io/badge/Built%20with-Tauri%20v2-24C8D8?logo=tauri&logoColor=white)](https://tauri.app/)
+[![Svelte v5](https://img.shields.io/badge/Svelte-v5-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev/)
+[![Rust Backend](https://img.shields.io/badge/Rust-Backend-black?logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![UI: Brutalist](https://img.shields.io/badge/UI-Brutalist%20Monochrome-black)](https://github.com/alfredgabriel/netwatch)
 
 ---
 
-## ✨ Features
+## 🇪🇸 Español
 
-- ⚡ **Zero Drivers Required**: Uses native Windows `iphlpapi.dll` and `tokio` async tasks. No Npcap or kernel extensions needed.
-- 🚀 **Ultra Lightweight**: Consumes less than 40 MB RAM and <1% CPU.
-- 🌐 **Async Reverse DNS**: Automatic background hostname resolution (`142.250.184.206` -> `api.google.com`) with lock-free `DashMap` caching.
-- 💻 **Process Inspection**: Maps every open connection to its PID, executable path, and native icon.
-- 📊 **Real-Time Bandwidth Meters**: Dynamic sparkline velocity charts and live socket statistics.
-- 🔍 **Instant Search & Filtering**: Filter by active sockets, raw IPs, or new processes.
-- 🌍 **Internationalization (i18n)**: Instant language switching (English & Spanish).
-- 🎨 **Cyber Dark Glassmorphism UI**: Beautiful, responsive interface created with Svelte 5 & Tailwind CSS v4.
+### 1. Visión y Propósito
+
+**NetWatch** es un monitor de sockets y tráfico de red para Windows de alto rendimiento. Identifica en tiempo real cada conexión TCP y UDP que sale de tu ordenador, resolviendo de forma asíncrona la IP remota a su dominio oficial y vinculando cada socket con el proceso, PID y ruta exacta del ejecutable.
+
+**100% sin drivers**: No requiere Npcap, WinPcap ni controladores a nivel de kernel. Utiliza directamente las APIs nativas de Windows (`iphlpapi.dll`) y tareas asíncronas en Rust (`tokio`).
 
 ---
 
-## 🏗️ Architecture Overview
+### 🚀 Características Principales
 
-```mermaid
-graph TD
-    subgraph Frontend ["Svelte 5 + Tailwind CSS v4 + svelte-i18n"]
-        UI[UI / Live Connection Table]
-        State[Svelte 5 Runes Store - connectionStore.svelte.ts]
-        Filters[Search & Category FilterBar]
-    end
-
-    subgraph Bridge ["Tauri v2 IPC Stream"]
-        Events[app_handle.emit 'network-update' - 300ms interval]
-    end
-
-    subgraph Backend ["Rust Core (Windows API)"]
-        TCP[iphlpapi - GetExtendedTcpTable]
-        UDP[iphlpapi - GetExtendedUdpTable]
-        Proc[Process Resolution - QueryFullProcessImageNameW]
-        DNS[Async Reverse DNS Cache - DashMap + tokio]
-    end
-
-    UI <--> State
-    Events --> State
-    TCP --> Events
-    UDP --> Events
-    Proc --> Events
-    DNS --> Events
-```
+- ⚡ **Sin drivers ni privilegios de kernel**: Consulta eficiente de tablas TCP/UDP nativas sin alterar tu pila de red.
+- 🪶 **Consumo mínimo**: Menos de 40 MB de RAM y menos del 1% de uso de CPU.
+- 🌐 **DNS Inverso Asíncrono**: Resolución automática en segundo plano con caché lock-free (`DashMap`).
+- 🔍 **Mapeo por Proceso**: Visualiza sockets en lista plana o agrupados por ejecutable.
+- 📊 **Telemetría y Métricas en Vivo**: Velocidad de subida y bajada, contador de conexiones activas y estados.
+- 🖤 **Estética Brutalista B&N**: Diseño monocromático de alto contraste, tipografía monoespaciada y respuesta instantánea.
 
 ---
 
-## 🛠️ Development & Building
+### 🛠️ Desarrollo y Compilación
 
-### Prerequisites
+#### Requisitos
+- [Node.js](https://nodejs.org/) v18+
+- [Rust](https://www.rust-lang.org/tools/install) con toolchain MSVC de Windows
 
-- [Node.js](https://nodejs.org/) (v18+)
-- [Rust](https://www.rust-lang.org/) (v1.75+)
-- Windows 10 / 11 SDK
-
-### Running Locally
-
+#### Ejecutar en desarrollo
 ```bash
-# Clone the repository
-git clone https://github.com/alfredgabriel/NetWatch.git
-cd NetWatch
-
-# Install dependencies
 npm install
-
-# Run Tauri development mode
 npm run tauri dev
 ```
 
-### Compiling Standalone Production Binary
-
+#### Compilar instalador standalone (.exe)
 ```bash
 npm run tauri build
 ```
-
-The compiled standalone executable and installer `.msi` / `.exe` will be generated in `src-tauri/target/release/bundle/`.
+El ejecutable se genera en:
+`src-tauri/target/release/bundle/`
 
 ---
 
-## 📄 License
+## 🇬🇧 English
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+### 1. Overview & Purpose
+
+**NetWatch** is a lightweight, driverless desktop network connection monitor for Windows. It captures all active outbound TCP and UDP sockets in real time, mapping remote IP addresses to human-readable hostnames and linking each socket to its owning process.
+
+**Zero kernel drivers**: Operates entirely via native Windows `iphlpapi.dll` and tokio-driven async workers, eliminating the need for Npcap or special drivers.
+
+---
+
+### 2. Architecture
+
+- **Backend**: Rust + Tauri v2 + Windows `GetExtendedTcpTable` / `GetExtendedUdpTable`.
+- **Frontend**: Svelte 5 + Tailwind CSS + Brutalist Monochrome Design System.
+- **Cache**: Concurrent lock-free reverse DNS cache via `DashMap`.
+
+---
+
+### 3. Build & Run
+
+```bash
+npm install
+npm run tauri dev      # Development
+npm run tauri build    # Standalone release (.exe)
+```
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**. See `LICENSE` for details.

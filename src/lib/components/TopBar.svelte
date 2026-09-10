@@ -1,7 +1,6 @@
-﻿<script lang="ts">
+<script lang="ts">
   import { t, locale } from 'svelte-i18n';
   import { switchLanguage } from '$lib/i18n';
-  import { Search, Pause, Play, Globe2, LayoutList, Layers } from 'lucide-svelte';
 
   let {
     searchQuery = '',
@@ -36,32 +35,31 @@
   ];
 </script>
 
-<div class="flex items-center justify-between gap-3 px-5 py-2.5 border-b shrink-0 select-none"
-  style="background:var(--bg-topbar); border-color:var(--border); min-height:54px;">
+<div class="flex items-center justify-between gap-3 px-5 py-2.5 border-b shrink-0 select-none font-mono"
+  style="background:#000000; border-color:#222222; min-height:52px;">
   
   <!-- Search input -->
   <div class="relative w-80 max-w-sm">
-    <Search class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 pointer-events-none" style="color:var(--text-muted);" />
     <input
       type="text"
       value={searchQuery}
       oninput={(e) => onSearchChange((e.target as HTMLInputElement).value)}
-      placeholder={$t('filters.search_placeholder')}
-      class="w-full pl-8 pr-3 py-1.5 rounded-md text-[12px] border outline-none transition-all placeholder:text-slate-500"
-      style="background:#090C15; border-color:var(--border); color:var(--text-main);"
+      placeholder="[SEARCH SOCKET / IP / PROCESS...]"
+      class="w-full px-3 py-1.5 text-[11px] border outline-none transition-all placeholder:text-[#555]"
+      style="background:#050505; border-color:#333333; color:#ffffff;"
     />
   </div>
 
   <!-- Filter chips -->
-  <div class="flex items-center gap-1.5 bg-[#080B13] p-1 rounded-lg border" style="border-color:var(--border);">
+  <div class="flex items-center gap-1 bg-[#050505] p-1 border border-[#222]">
     {#each filters as f}
       {@const isSelected = activeFilter === f.id}
       <button
         onclick={() => onFilterChange(f.id)}
-        class="px-2.5 py-1 rounded-md text-[11px] font-medium transition-all"
+        class="px-2.5 py-1 text-[10px] font-bold uppercase transition-all"
         style={isSelected
-          ? 'background:var(--accent); color:#ffffff; font-weight:600;'
-          : 'color:var(--text-muted); background:transparent;'}
+          ? 'background:#ffffff; color:#000000;'
+          : 'color:#888888; background:transparent;'}
       >
         {$t(f.labelKey)}
       </button>
@@ -71,49 +69,46 @@
   <!-- Right Actions: View Mode Switcher + Language + Pause -->
   <div class="flex items-center gap-2">
     <!-- View Switcher (Flat vs Grouped) -->
-    <div class="flex items-center bg-[#080B13] p-0.5 rounded-md border" style="border-color:var(--border);">
+    <div class="flex items-center bg-[#050505] p-0.5 border border-[#222]">
       <button
         onclick={() => onViewModeChange('flat')}
         title={$t('table.view_flat')}
-        class="p-1.5 rounded text-[11px] transition-all flex items-center gap-1"
-        style={viewMode === 'flat' ? 'background:rgba(255,255,255,0.1); color:var(--text-main);' : 'color:var(--text-muted);'}
+        class="px-2 py-1 text-[10px] font-bold uppercase transition-all"
+        style={viewMode === 'flat' ? 'background:#ffffff; color:#000000;' : 'color:#888888;'}
       >
-        <LayoutList class="w-3.5 h-3.5" />
+        FLAT
       </button>
       <button
         onclick={() => onViewModeChange('grouped')}
         title={$t('table.view_grouped')}
-        class="p-1.5 rounded text-[11px] transition-all flex items-center gap-1"
-        style={viewMode === 'grouped' ? 'background:rgba(255,255,255,0.1); color:var(--text-main);' : 'color:var(--text-muted);'}
+        class="px-2 py-1 text-[10px] font-bold uppercase transition-all"
+        style={viewMode === 'grouped' ? 'background:#ffffff; color:#000000;' : 'color:#888888;'}
       >
-        <Layers class="w-3.5 h-3.5" />
+        GROUPED
       </button>
     </div>
 
     <!-- Language toggle -->
     <button
       onclick={toggleLang}
-      class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-[11px] font-medium border transition-colors hover:border-slate-500"
-      style="color:var(--text-muted); border-color:var(--border); background:rgba(255,255,255,0.03);"
+      class="px-2.5 py-1 text-[10px] font-bold border transition-colors"
+      style="color:#ffffff; border-color:#333; background:#050505;"
     >
-      <Globe2 class="w-3.5 h-3.5" />
-      <span>{$locale === 'es' ? 'ES' : 'EN'}</span>
+      [{$locale === 'es' ? 'ES' : 'EN'}]
     </button>
 
     <!-- Pause/Resume button -->
     <button
       onclick={onTogglePause}
-      class="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[12px] font-medium border transition-all"
+      class="px-3 py-1 text-[10px] font-bold uppercase border transition-all"
       style={isPaused
-        ? 'color:#4ADE80; border-color:rgba(74,222,128,0.4); background:rgba(74,222,128,0.1);'
-        : 'color:var(--text-main); border-color:var(--border); background:rgba(255,255,255,0.04);'}
+        ? 'color:#000000; border-color:#ffffff; background:#ffffff;'
+        : 'color:#ffffff; border-color:#ffffff; background:#000000;'}
     >
       {#if isPaused}
-        <Play class="w-3.5 h-3.5 text-emerald-400" />
-        <span>{$t('actions.resume')}</span>
+        [► RESUME]
       {:else}
-        <Pause class="w-3.5 h-3.5 text-amber-400" />
-        <span>{$t('actions.pause')}</span>
+        [❚❚ PAUSE]
       {/if}
     </button>
   </div>
